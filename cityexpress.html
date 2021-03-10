@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>label</th>
+            <th>value</th>
+            <th>marca</th>
+            <th>codigo</th>
+            <th>eliminar</th>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    function filterHoteles(item) {
+        return item.tipo === 'hotel';
+    }
+
+    function printHotel(hotel) {
+        var newTr = document.createElement('tr');
+        var labelTd = document.createElement('td');
+        var valueTd = document.createElement('td');
+        var marcaTd = document.createElement('td');
+        var codigoTd = document.createElement('td');
+        var eliminarTd = document.createElement('td');
+        var eliminarBtn = document.createElement('button');
+        eliminarBtn.addEventListener('click', e => {
+            e.preventDefault();
+            newTr.remove();
+        });
+
+        newTr.appendChild(labelTd).append(hotel.label);
+        newTr.appendChild(valueTd).append(hotel.value);
+        newTr.appendChild(marcaTd).append(hotel.marca);
+        newTr.appendChild(codigoTd).append(hotel.codigo);
+        newTr.appendChild(eliminarTd).appendChild(eliminarBtn).append('Eliminar');
+        
+        document.querySelector('#list').appendChild(newTr);
+    }
+
+    fetch('https://www.cityexpress.com/data/autocomplete.json')
+        .then(data => data.json())
+        .then(data => {
+            data.filter(filterHoteles).forEach(printHotel);
+        });
+</script>
+</html>
