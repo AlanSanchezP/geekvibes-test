@@ -1,3 +1,3 @@
 function esPalindromo(palabra) {
-    return palabra.split('').reverse().join('') === palabra;
+    return palabra.replace(/\s/g, '').split('').reverse().join('') === palabra.replace(/\s/g, '');
 }
