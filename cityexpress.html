@@ -33,10 +33,7 @@
         var codigoTd = document.createElement('td');
         var eliminarTd = document.createElement('td');
         var eliminarBtn = document.createElement('button');
-        eliminarBtn.addEventListener('click', e => {
-            e.preventDefault();
-            newTr.remove();
-        });
+        eliminarBtn.classList.add('eliminar-btn');
 
         newTr.appendChild(labelTd).append(hotel.label);
         newTr.appendChild(valueTd).append(hotel.value);
@@ -47,10 +44,18 @@
         document.querySelector('#list').appendChild(newTr);
     }
 
+    function btnClickListener(e) {
+        if (e.target.classList.contains('eliminar-btn')) {
+            e.preventDefault();
+            e.target.closest('tr').remove();
+        }
+    }
+
     fetch('https://www.cityexpress.com/data/autocomplete.json')
         .then(data => data.json())
         .then(data => {
             data.filter(filterHoteles).forEach(printHotel);
+            document.body.addEventListener('click', btnClickListener);
         });
 </script>
 </html>
