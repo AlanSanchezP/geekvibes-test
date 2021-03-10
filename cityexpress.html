@@ -4,21 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tablas.css">
     <title>Document</title>
 </head>
-<body>
-    <table>
-        <thead>
-            <th>label</th>
-            <th>value</th>
-            <th>marca</th>
-            <th>codigo</th>
-            <th>eliminar</th>
-        </thead>
-        <tbody id="list">
+<style>
+td:nth-of-type(3),
+td:nth-of-type(4) {
+    background: #eee;
+    text-align: center;
+}
 
-        </tbody>
-    </table>
+td {
+    text-align: center;
+}
+
+td:nth-of-type(2) {
+    min-width: 300px;
+    width: 20vw;
+}
+
+.eliminar-btn {
+    background-color: #b52b2b;
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.7em 1.2em;
+    transition: background-color 0.2s;
+}
+
+.eliminar-btn:hover,
+.eliminar-btn:active,
+.eliminar-btn:focus {
+    background-color: #821b1b;
+}
+</style>
+<body>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <th>Label</th>
+                <th>Value</th>
+                <th>Marca</th>
+                <th>Código</th>
+                <th aria-hidden="true"></th>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </div>
 </body>
 <script>
     function filterHoteles(item) {

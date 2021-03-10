@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tablas.css">
     <title>Document</title>
 </head>
+<style>
+td:nth-of-type(1),
+td:nth-of-type(2) {
+    background: #eee;
+    text-align: center;
+}
+</style>
 <body>
-    <table>
-        <thead>
-            <th>user id</th>
-            <th>post id</th>
-            <th>title</th>
-        </thead>
-        <tbody id="list">
-
-        </tbody>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <th>User id</th>
+                <th>Post id</th>
+                <th>Title</th>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </div>
 </body>
 <script>
     function sortPosts(a, b) {
